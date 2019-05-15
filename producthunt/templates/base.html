@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Product Hunt · Home</title>
+    <title>OLX - Clone · Home</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -32,8 +32,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{% static 'logo.png' %}" class="d-inline-block alighn-top" width="30"/>
-         Product Hunt
+        <img src="{% static 'merchant.png' %}" class="d-inline-block alighn-top" width="30"/>
+         OLX - Clone
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,6 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'create' %}"><span class="oi oi-plus"></span></a>
                 <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick="">Logout </a>
                     <form id="logout" method="POST" action="{% url 'logout' %}">
                     {% csrf_token %}
@@ -52,15 +51,22 @@
                 {% else %}
                 <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login </a>
-
                 {% endif %}
+
+                <a href="{% url 'sell' %}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-plus"></span> Sell </button></a>
             </div>
         </div>
         </div>
     </nav>
 </header>
 
+
+
 <div class="container">
+    <br>
+    {% if erorr %}
+        {{ error }}
+    {% endif %}
     {% block content %}
     {% endblock %}
 </div>
@@ -68,8 +74,7 @@
 <footer class="text-muted">
     <div class="container">
         <p>© Thank You {% now "Y" %}</p>
-        <div>Icons made by <a href="https://www.flaticon.com/authors/twitter" title="Twitter">Twitter</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-    </div>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>    </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -82,3 +87,4 @@
         crossorigin="anonymous"></script>
 
 </html>
+

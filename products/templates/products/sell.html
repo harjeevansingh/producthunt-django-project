@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if error %}
+        {{ error }}
+        <br>
+        <br>
+    {% endif %}
+
+<div class="select2-container--default">
+
+    <br>
+    <br>
+    <form method = 'POST' action = "" enctype="multipart/form-data">
+        {% csrf_token %}
+        Title:
+        <br>
+        <input type="text" name="title">
+        <br>
+        <br>
+        Price:
+        <br>
+        <input type="number" name="price">
+        <br>
+        <br>
+
+        Description:
+        <br>
+        <input type="text" name="body">
+        <br>
+        <br>
+
+        Location:
+        <br>
+        <input type="text" name="location">
+        <br>
+        <br>
+
+        Image:
+        <br>
+        <input type="file" name="image">
+        <br><br>
+
+        <input class="btn btn-primary" type="submit"  >
+
+    </form>
+
+</div>
+{% endblock %}
